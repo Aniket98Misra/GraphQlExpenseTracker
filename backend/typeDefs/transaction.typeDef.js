@@ -8,7 +8,7 @@ const transactionTypeDef = `#graphql
     amount: Float!
     location: String
     date: String!
-    # user: User!
+     user: User!
   }
   type Query {
     transactions: [Transaction!]
@@ -20,6 +20,11 @@ const transactionTypeDef = `#graphql
     updateTransaction(input: UpdateTransactionInput!): Transaction!
     deleteTransaction(transactionId:ID!): Transaction!
   }
+  type CategoryStatistics {
+    category: String!
+    totalAmount: Float!
+  }
+
   input CreateTransactionInput {
     description: String!
     paymentType: String!
@@ -27,6 +32,15 @@ const transactionTypeDef = `#graphql
     amount: Float!
     date: String!
     location: String
+  }
+  input UpdateTransactionInput {
+    transactionId: ID!
+    description: String
+    paymentType: String
+    category: String
+    amount: Float
+    location: String
+    date: String
   }
   `;
 export default transactionTypeDef;
